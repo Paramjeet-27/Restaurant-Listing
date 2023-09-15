@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -15,17 +16,39 @@ const CustList = () => {
       edditing_address: "dxfgdfdhhfghdfg",
       edditing_contact: "dfgdg gydfg dghdfh ",
     },
+    {
+      res_name: "Akash",
+      address: "dxfgdfdhhfghdfg",
+      contact: "dfgdg gydfg dghdfh ",
+      isEdditing: false,
+      edditing_res_name: "Akash",
+      edditing_address: "dxfgdfdhhfghdfg",
+      edditing_contact: "dfgdg gydfg dghdfh ",
+    },
+    {
+      res_name: "Akash",
+      address: "dxfgdfdhhfghdfg",
+      contact: "dfgdg gydfg dghdfh ",
+      isEdditing: false,
+      edditing_res_name: "Akash",
+      edditing_address: "dxfgdfdhhfghdfg",
+      edditing_contact: "dfgdg gydfg dghdfh ",
+    },
   ];
   const [resDetails, setResDetails] = useState(array);
   const resList = resDetails.map((ele, index) => (
     <>
-      <List key={index}>
+      <List key={index} sx={{ mx: 10 }}>
         <ListItem disablePadding>
           <ListItemButton>
-            <ListItemText
-              primary={ele.res_name}
-              secondary={`${ele.address}, ${ele.contact}`}
-            />
+            <ListItemText primary={ele.res_name} secondary={ele.contact} />
+            <ListItemText secondary={ele.address} />
+            <Button sx={{ mx: 1 }} variant="contained">
+              Edit
+            </Button>
+            <Button sx={{ mx: 1 }} variant="contained">
+              Delete
+            </Button>
           </ListItemButton>
         </ListItem>
       </List>
