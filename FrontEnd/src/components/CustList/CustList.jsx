@@ -3,42 +3,50 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import { useState } from "react";
-import Input from "../Input/Input";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const CustList = () => {
-  const array = [
-    {
-      res_name: "Akash",
-      address: "SCO-45, Rank Road, Delhi",
-      email: "akash@gmail.com",
-      phone: 9874563221,
-      isEditing: false,
-    },
-    {
-      res_name: "Akash",
-      address: "SCO-45, Rank Road, Delhi",
-      email: "akash@gmail.com",
-      phone: 9874563221,
-      isEditing: false,
-    },
-    {
-      res_name: "Akash",
-      address: "SCO-45, Rank Road, Delhi",
-      email: "akash@gmail.com",
-      phone: 9874563221,
-      isEditing: false,
-    },
-    {
-      res_name: "Akash",
-      address: "SCO-45, Rank Road, Delhi",
-      email: "akash@gmail.com",
-      phone: 9874563221,
-      isEditing: false,
-    },
-  ];
+  // const array = [
+  //   {
+  //     res_name: "Akash",
+  //     address: "SCO-45, Rank Road, Delhi",
+  //     email: "akash@gmail.com",
+  //     phone: 9874563221,
+  //     isEditing: false,
+  //   },
+  //   {
+  //     res_name: "Akash",
+  //     address: "SCO-45, Rank Road, Delhi",
+  //     email: "akash@gmail.com",
+  //     phone: 9874563221,
+  //     isEditing: false,
+  //   },
+  //   {
+  //     res_name: "Akash",
+  //     address: "SCO-45, Rank Road, Delhi",
+  //     email: "akash@gmail.com",
+  //     phone: 9874563221,
+  //     isEditing: false,
+  //   },
+  //   {
+  //     res_name: "Akash",
+  //     address: "SCO-45, Rank Road, Delhi",
+  //     email: "akash@gmail.com",
+  //     phone: 9874563221,
+  //     isEditing: false,
+  //   },
+  // ];
 
-  const [resDetails, setResDetails] = useState(array);
+  const axios_main = axios.create({
+    baseURL: "http://localhost:8888/",
+  });
+
+  const [resDetails, setResDetails] = useState([]);
+
+  useEffect(() => {
+    axios_main.get("/").then((res) => console.log(res.data));
+  }, []);
 
   const editBtnHandler = (index) => {
     const listCopy = [...resDetails];
