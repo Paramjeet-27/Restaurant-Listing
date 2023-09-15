@@ -1,9 +1,12 @@
 import "./App.css";
+import AddRestaurant from "./pages/AddRestaurant";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <>
-      <h2>Application Level</h2>
+      <Home />
+      <AddRestaurant />
     </>
   );
 }
