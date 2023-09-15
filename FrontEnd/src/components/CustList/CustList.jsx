@@ -11,31 +11,76 @@ const CustList = () => {
       res_name: "Akash",
       address: "dxfgdfdhhfghdfg",
       contact: "dfgdg gydfg dghdfh ",
-      isEdditing: false,
-      edditing_res_name: "Akash",
-      edditing_address: "dxfgdfdhhfghdfg",
-      edditing_contact: "dfgdg gydfg dghdfh ",
+      isEditing: false,
+      editing_res_name: "Akash",
+      editing_address: "dxfgdfdhhfghdfg",
+      editing_contact: "dfgdg gydfg dghdfh ",
     },
     {
-      res_name: "Akash",
+      res_name: "Deepak",
       address: "dxfgdfdhhfghdfg",
       contact: "dfgdg gydfg dghdfh ",
-      isEdditing: false,
-      edditing_res_name: "Akash",
-      edditing_address: "dxfgdfdhhfghdfg",
-      edditing_contact: "dfgdg gydfg dghdfh ",
+      isEditing: false,
+      editing_res_name: "Akash",
+      editing_address: "dxfgdfdhhfghdfg",
+      editing_contact: "dfgdg gydfg dghdfh ",
     },
     {
-      res_name: "Akash",
+      res_name: "Tarun",
       address: "dxfgdfdhhfghdfg",
       contact: "dfgdg gydfg dghdfh ",
-      isEdditing: false,
-      edditing_res_name: "Akash",
-      edditing_address: "dxfgdfdhhfghdfg",
-      edditing_contact: "dfgdg gydfg dghdfh ",
+      isEditing: false,
+      editing_res_name: "Akash",
+      editing_address: "dxfgdfdhhfghdfg",
+      editing_contact: "dfgdg gydfg dghdfh ",
+    },
+    {
+      res_name: "Gopi",
+      address: "dxfgdfdhhfghdfg",
+      contact: "dfgdg gydfg dghdfh ",
+      isEditing: false,
+      editing_res_name: "Akash",
+      editing_address: "dxfgdfdhhfghdfg",
+      editing_contact: "dfgdg gydfg dghdfh ",
+    },
+    {
+      res_name: "Arjun",
+      address: "dxfgdfdhhfghdfg",
+      contact: "dfgdg gydfg dghdfh ",
+      isEditing: false,
+      editing_res_name: "Akash",
+      editing_address: "dxfgdfdhhfghdfg",
+      editing_contact: "dfgdg gydfg dghdfh ",
+    },
+    {
+      res_name: "Raghav",
+      address: "dxfgdfdhhfghdfg",
+      contact: "dfgdg gydfg dghdfh ",
+      isEditing: false,
+      editing_res_name: "Akash",
+      editing_address: "dxfgdfdhhfghdfg",
+      editing_contact: "dfgdg gydfg dghdfh ",
     },
   ];
+
+  // const [resName, setResName] = useState();
+  // const [resAddress, setResAddress] = useState();
+  // const [resEmail, setResEmail] = useState();
+  // const [resPhone, setResPhone] = useState();
   const [resDetails, setResDetails] = useState(array);
+
+  const editBtnHandler = (index) => {
+    const listCopy = [...resDetails];
+    listCopy[index].isEditing = true;
+    setTask(listCopy);
+  };
+
+  const deleteBtnHandler = (index) => {
+    const listCopy = [...resDetails];
+    listCopy.splice(index, 1);
+    setResDetails(listCopy);
+  };
+
   const resList = resDetails.map((ele, index) => (
     <>
       <List key={index} sx={{ mx: 10 }}>
@@ -46,7 +91,13 @@ const CustList = () => {
             <Button sx={{ mx: 1 }} variant="contained">
               Edit
             </Button>
-            <Button sx={{ mx: 1 }} variant="contained">
+            <Button
+              sx={{ mx: 1 }}
+              variant="contained"
+              onClick={() => {
+                deleteBtnHandler(index);
+              }}
+            >
               Delete
             </Button>
           </ListItemButton>
