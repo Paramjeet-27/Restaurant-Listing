@@ -4,75 +4,46 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { useState } from "react";
+import Input from "../Input/Input";
 
 const CustList = () => {
   const array = [
     {
       res_name: "Akash",
-      address: "dxfgdfdhhfghdfg",
-      contact: "dfgdg gydfg dghdfh ",
+      address: "SCO-45, Rank Road, Delhi",
+      email: "akash@gmail.com",
+      phone: 9874563221,
       isEditing: false,
-      editing_res_name: "Akash",
-      editing_address: "dxfgdfdhhfghdfg",
-      editing_contact: "dfgdg gydfg dghdfh ",
     },
     {
-      res_name: "Deepak",
-      address: "dxfgdfdhhfghdfg",
-      contact: "dfgdg gydfg dghdfh ",
+      res_name: "Akash",
+      address: "SCO-45, Rank Road, Delhi",
+      email: "akash@gmail.com",
+      phone: 9874563221,
       isEditing: false,
-      editing_res_name: "Akash",
-      editing_address: "dxfgdfdhhfghdfg",
-      editing_contact: "dfgdg gydfg dghdfh ",
     },
     {
-      res_name: "Tarun",
-      address: "dxfgdfdhhfghdfg",
-      contact: "dfgdg gydfg dghdfh ",
+      res_name: "Akash",
+      address: "SCO-45, Rank Road, Delhi",
+      email: "akash@gmail.com",
+      phone: 9874563221,
       isEditing: false,
-      editing_res_name: "Akash",
-      editing_address: "dxfgdfdhhfghdfg",
-      editing_contact: "dfgdg gydfg dghdfh ",
     },
     {
-      res_name: "Gopi",
-      address: "dxfgdfdhhfghdfg",
-      contact: "dfgdg gydfg dghdfh ",
+      res_name: "Akash",
+      address: "SCO-45, Rank Road, Delhi",
+      email: "akash@gmail.com",
+      phone: 9874563221,
       isEditing: false,
-      editing_res_name: "Akash",
-      editing_address: "dxfgdfdhhfghdfg",
-      editing_contact: "dfgdg gydfg dghdfh ",
-    },
-    {
-      res_name: "Arjun",
-      address: "dxfgdfdhhfghdfg",
-      contact: "dfgdg gydfg dghdfh ",
-      isEditing: false,
-      editing_res_name: "Akash",
-      editing_address: "dxfgdfdhhfghdfg",
-      editing_contact: "dfgdg gydfg dghdfh ",
-    },
-    {
-      res_name: "Raghav",
-      address: "dxfgdfdhhfghdfg",
-      contact: "dfgdg gydfg dghdfh ",
-      isEditing: false,
-      editing_res_name: "Akash",
-      editing_address: "dxfgdfdhhfghdfg",
-      editing_contact: "dfgdg gydfg dghdfh ",
     },
   ];
 
-  // const [resName, setResName] = useState();
-  // const [resAddress, setResAddress] = useState();
-  // const [resEmail, setResEmail] = useState();
-  // const [resPhone, setResPhone] = useState();
   const [resDetails, setResDetails] = useState(array);
 
   const editBtnHandler = (index) => {
     const listCopy = [...resDetails];
     listCopy[index].isEditing = true;
-    setTask(listCopy);
+    setResDetails(listCopy);
   };
 
   const deleteBtnHandler = (index) => {
@@ -86,11 +57,39 @@ const CustList = () => {
       <List key={index} sx={{ mx: 10 }}>
         <ListItem disablePadding>
           <ListItemButton>
-            <ListItemText primary={ele.res_name} secondary={ele.contact} />
-            <ListItemText secondary={ele.address} />
-            <Button sx={{ mx: 1 }} variant="contained">
-              Edit
-            </Button>
+            {!ele.isEditing && (
+              <>
+                <ListItemText
+                  primary={ele.res_name}
+                  secondary={`${ele.email} | ${ele.phone}`}
+                />
+                <ListItemText secondary={ele.address} />
+                <Button
+                  sx={{ mx: 1 }}
+                  variant="contained"
+                  onClick={() => {
+                    editBtnHandler(index);
+                  }}
+                >
+                  Edit
+                </Button>
+              </>
+            )}
+            {ele.isEditing && (
+              <>
+                <ListItemText
+                  primary={ele.res_name}
+                  secondary={`${ele.email} | ${ele.phone}`}
+                />
+                <ListItemText secondary={ele.address} />
+                <Button sx={{ mx: 1 }} variant="contained">
+                  Save
+                </Button>
+                <Button sx={{ mx: 1 }} variant="contained">
+                  Cancel
+                </Button>
+              </>
+            )}
             <Button
               sx={{ mx: 1 }}
               variant="contained"
