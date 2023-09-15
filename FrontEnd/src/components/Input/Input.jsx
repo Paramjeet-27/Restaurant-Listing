@@ -1,6 +1,6 @@
 import TextField from "@mui/material/TextField";
 
-const Input = ({ required, label, variant, id }) => {
+const Input = ({ required, label, variant, id, changeHandler }) => {
   return (
     <>
       <TextField
@@ -9,6 +9,7 @@ const Input = ({ required, label, variant, id }) => {
         id={id}
         label={label}
         variant={variant}
+        onChange={changeHandler}
       />
     </>
   );
