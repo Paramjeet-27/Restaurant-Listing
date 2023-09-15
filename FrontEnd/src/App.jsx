@@ -1,12 +1,10 @@
 import "./App.css";
-import AddRestaurant from "./pages/AddRestaurant";
-import Home from "./pages/Home";
+import PageRoutes from "./routes/PageRoutes";
 
 function App() {
   return (
     <>
-      <Home />
-      <AddRestaurant />
+      <PageRoutes />
     </>
   );
 }

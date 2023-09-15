@@ -1,8 +1,6 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import CustButton from "../components/CustButton/CustButton";
 import CustList from "../components/CustList/CustList";
-import Input from "../components/Input/Input";
 import Nav from "../components/Nav/Nav";
 
 const Home = () => {
@@ -18,8 +16,6 @@ const Home = () => {
         </Typography>
       </Box>
       <Nav />
-      <CustButton />
-      <Input />
       <CustList />
     </>
   );

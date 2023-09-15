@@ -1,9 +1,15 @@
 import TextField from "@mui/material/TextField";
 
-const Input = () => {
+const Input = ({ required, label, variant, id }) => {
   return (
     <>
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+      <TextField
+        sx={{ mx: 40, my: 1 }}
+        required={required}
+        id={id}
+        label={label}
+        variant={variant}
+      />
     </>
   );
 };
