@@ -4,9 +4,9 @@ const express = require("express");
 const app = express();
 const routes = require("./routes/routes");
 
+app.use(cors());
 app.use(express.json());
 app.use("/", routes);
-app.use(cors());
 
 const mysqlConnect = () => {
   return sequelize.authenticate();
