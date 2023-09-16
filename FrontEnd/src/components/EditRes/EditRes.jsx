@@ -7,7 +7,6 @@ import routes from "../../routes/routes.json";
 
 const EditRes = ({ indexValue }) => {
   const navigate = useNavigate();
-  const [complete_data, setCompleteData] = useState();
   const [resName, setResName] = useState();
   const [address, setAddress] = useState();
   const [email, setEmail] = useState();
@@ -25,18 +24,24 @@ const EditRes = ({ indexValue }) => {
   const phoneChangeHandler = (e) => {
     setPhone(e.target.value);
   };
+  const [complete_data, setCompleteData] = useState({});
 
   const axios_main = axios.create({
     baseURL: "http://localhost:8888/",
   });
 
   useEffect(() => {
-    axios_main.get("").then((res) => {
-      setCompleteData(res.data.data[indexValue]);
+    if (complete_data) {
       setResName(complete_data.res_name);
       setAddress(complete_data.address);
       setEmail(complete_data.email);
       setPhone(complete_data.phone);
+    }
+  }, [complete_data]);
+
+  useEffect(() => {
+    axios_main.get("/").then((res) => {
+      setCompleteData(res.data.data[indexValue]);
     });
   }, []);
 
@@ -54,7 +59,7 @@ const EditRes = ({ indexValue }) => {
     navigate(routes.HOME);
   };
 
-  // console.log(complete_data);
+  console.log(complete_data);
 
   return (
     <>
