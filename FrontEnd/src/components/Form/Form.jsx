@@ -27,12 +27,16 @@ const Form = () => {
   });
 
   const addRestaurantHandler = () => {
-    axios_main.post("/", {
+    axios_main.post("", {
       res_name: `${resName}`,
       address: `${address}`,
       email: `${email}`,
       phone: `${phone}`,
     });
+    setResName("");
+    setAddress("");
+    setEmail("");
+    setPhone("");
   };
 
   return (
@@ -48,6 +52,7 @@ const Form = () => {
           label="Restaurant Name"
           variant="filled"
           id="filled-basic"
+          value={resName}
           changeHandler={(e) => nameChangeHandler(e)}
         />
         <Input
@@ -55,6 +60,7 @@ const Form = () => {
           label="Address"
           variant="filled"
           id="filled-basic"
+          value={address}
           changeHandler={(e) => addressChangeHandler(e)}
         />
         <Input
@@ -62,6 +68,7 @@ const Form = () => {
           label="Email ID"
           variant="filled"
           id="filled-basic"
+          value={email}
           changeHandler={(e) => emailChangeHandler(e)}
         />
         <Input
@@ -69,6 +76,7 @@ const Form = () => {
           label="Phone Number"
           variant="filled"
           id="filled-basic"
+          value={phone}
           changeHandler={(e) => phoneChangeHandler(e)}
         />
       </div>
