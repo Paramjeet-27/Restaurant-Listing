@@ -1,16 +1,55 @@
 import Button from "@mui/material/Button";
 import Input from "../Input/Input";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import routes from "../../routes/routes.json";
 
-const EditRes = (index) => {
+const EditRes = ({ indexValue }) => {
+  const navigate = useNavigate();
+  const [complete_data, setCompleteData] = useState();
+  const [resName, setResName] = useState();
+  const [address, setAddress] = useState();
+  const [email, setEmail] = useState();
+  const [phone, setPhone] = useState();
+
+  const nameChangeHandler = (e) => {
+    setResName(e.target.value);
+  };
+  const addressChangeHandler = (e) => {
+    setAddress(e.target.value);
+  };
+  const emailChangeHandler = (e) => {
+    setEmail(e.target.value);
+  };
+  const phoneChangeHandler = (e) => {
+    setPhone(e.target.value);
+  };
+
   const axios_main = axios.create({
     baseURL: "http://localhost:8888/",
   });
 
   useEffect(() => {
-    axios_main.get("/").then((res) => console.log(res.data));
+    axios_main.get("").then((res) => {
+      setCompleteData(res.data.data[indexValue]);
+    });
   }, []);
+
+  const saveBtnHandler = () => {
+    axios_main.put(`/${complete_data.id}`, {
+      res_name: `${resName}`,
+      address: `${address}`,
+      email: `${email}`,
+      phone: `${phone}`,
+    });
+  };
+
+  const cancelBtnHandler = () => {
+    navigate(routes.HOME);
+  };
+
+  console.log(complete_data);
 
   return (
     <>
@@ -23,30 +62,30 @@ const EditRes = (index) => {
       >
         <Input
           required="true"
-          label="Restaurant Name"
           variant="filled"
           id="filled-basic"
+          value={complete_data.res_name}
           changeHandler={(e) => nameChangeHandler(e)}
         />
         <Input
           required="true"
-          label="Address"
           variant="filled"
           id="filled-basic"
+          value={complete_data.address}
           changeHandler={(e) => addressChangeHandler(e)}
         />
         <Input
           required="true"
-          label="Email ID"
           variant="filled"
           id="filled-basic"
+          value={complete_data.email}
           changeHandler={(e) => emailChangeHandler(e)}
         />
         <Input
           required="true"
-          label="Phone Number"
           variant="filled"
           id="filled-basic"
+          value={complete_data.phone}
           changeHandler={(e) => phoneChangeHandler(e)}
         />
       </div>
@@ -54,14 +93,14 @@ const EditRes = (index) => {
         <Button
           sx={{ mx: 2, my: 5 }}
           variant="contained"
-          onClick={() => addRestaurantHandler()}
+          onClick={() => saveBtnHandler()}
         >
           Save
         </Button>
         <Button
           sx={{ mx: 2, my: 5 }}
           variant="contained"
-          onClick={() => addRestaurantHandler()}
+          onClick={() => cancelBtnHandler()}
         >
           Cancel
         </Button>
