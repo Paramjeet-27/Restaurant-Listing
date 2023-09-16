@@ -14,10 +14,13 @@ const CustList = () => {
   const [resDetails, setResDetails] = useState([]);
 
   useEffect(() => {
-    axios_main.get("").then((res) => setResDetails(res.data.data));
+    axios_main.get("").then((res) => {
+      setResDetails(res.data.data);
+    });
   }, [resDetails]);
 
   const editBtnHandler = (index) => {
+    console.log(resDetails[index]);
     const listCopy = [...resDetails];
     listCopy[index].isEditing = true;
     setResDetails(listCopy);

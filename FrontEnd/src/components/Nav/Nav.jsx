@@ -6,10 +6,8 @@ import { useNavigate } from "react-router-dom";
 import routes from "../../routes/routes.json";
 
 const Nav = () => {
-  const [value, setValue] = useState(0);
-
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    history.currentTab = newValue;
   };
 
   const navigate = useNavigate();
@@ -17,7 +15,11 @@ const Nav = () => {
   return (
     <>
       <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
-        <Tabs value={value} onChange={handleChange} centered>
+        <Tabs
+          value={history.currentTab ? history.currentTab : 0}
+          onChange={handleChange}
+          centered
+        >
           <Tab label="View Listings" onClick={() => navigate(routes.HOME)} />
           <Tab
             label="Add New Restaurant"
