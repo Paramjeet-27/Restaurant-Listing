@@ -15,7 +15,7 @@ const CustList = () => {
 
   useEffect(() => {
     axios_main.get("").then((res) => setResDetails(res.data.data));
-  }, []);
+  }, [resDetails]);
 
   const editBtnHandler = (index) => {
     const listCopy = [...resDetails];
@@ -29,9 +29,7 @@ const CustList = () => {
   };
 
   const deleteBtnHandler = (index) => {
-    const listCopy = [...resDetails];
-    listCopy.splice(index, 1);
-    setResDetails(listCopy);
+    axios_main.delete(`/${resDetails[index].id}`);
   };
 
   const resList = resDetails.map((ele, index) => (
