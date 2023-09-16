@@ -20,19 +20,24 @@ const CustList = () => {
 
   const [resDetails, setResDetails] = useState([]);
 
-  useEffect(() => {
+  const fetcher = () => {
     axios_main.get("").then((res) => {
       setResDetails(res.data.data);
     });
-  }, [resDetails]);
+  };
+
+  useEffect(() => {
+    fetcher();
+  }, []);
 
   const editBtnHandler = (index) => {
     newIndex(index);
     navigate(routes.EDIT_RESTAURANT);
   };
 
-  const deleteBtnHandler = (index) => {
-    axios_main.delete(`/${resDetails[index].id}`);
+  const deleteBtnHandler = async (index) => {
+    await axios_main.delete(`/${resDetails[index].id}`);
+    fetcher();
   };
 
   const resList = resDetails.map((ele, index) => (
