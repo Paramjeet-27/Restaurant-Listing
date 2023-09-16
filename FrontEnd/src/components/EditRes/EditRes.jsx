@@ -33,6 +33,10 @@ const EditRes = ({ indexValue }) => {
   useEffect(() => {
     axios_main.get("").then((res) => {
       setCompleteData(res.data.data[indexValue]);
+      setResName(complete_data.res_name);
+      setAddress(complete_data.address);
+      setEmail(complete_data.email);
+      setPhone(complete_data.phone);
     });
   }, []);
 
@@ -43,13 +47,14 @@ const EditRes = ({ indexValue }) => {
       email: `${email}`,
       phone: `${phone}`,
     });
+    navigate(routes.HOME);
   };
 
   const cancelBtnHandler = () => {
     navigate(routes.HOME);
   };
 
-  console.log(complete_data);
+  // console.log(complete_data);
 
   return (
     <>
@@ -64,28 +69,28 @@ const EditRes = ({ indexValue }) => {
           required="true"
           variant="filled"
           id="filled-basic"
-          value={complete_data.res_name}
+          value={resName}
           changeHandler={(e) => nameChangeHandler(e)}
         />
         <Input
           required="true"
           variant="filled"
           id="filled-basic"
-          value={complete_data.address}
+          value={address}
           changeHandler={(e) => addressChangeHandler(e)}
         />
         <Input
           required="true"
           variant="filled"
           id="filled-basic"
-          value={complete_data.email}
+          value={email}
           changeHandler={(e) => emailChangeHandler(e)}
         />
         <Input
           required="true"
           variant="filled"
           id="filled-basic"
-          value={complete_data.phone}
+          value={phone}
           changeHandler={(e) => phoneChangeHandler(e)}
         />
       </div>
