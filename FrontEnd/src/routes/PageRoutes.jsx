@@ -1,4 +1,5 @@
 import AddRestaurant from "../pages/AddRestaurant";
+import Dishes from "../pages/Dishes";
 import EditRestaurant from "../pages/EditRestaurant";
 import Home from "../pages/Home";
 import routes from "./routes.json";
@@ -10,6 +11,7 @@ const PageRoutes = () => {
       <Route path={routes.HOME} element={<Home />} />
       <Route path={routes.ADD_NEW_RESTAURANT} element={<AddRestaurant />} />
       <Route path={routes.EDIT_RESTAURANT} element={<EditRestaurant />} />
+      <Route path={routes.DISHES} element={<Dishes />} />
     </Routes>
   );
 };

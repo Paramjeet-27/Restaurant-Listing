@@ -30,6 +30,11 @@ const CustList = () => {
     fetcher();
   }, []);
 
+  const detailsBtnHandler = (index) => {
+    newIndex(index);
+    navigate(routes.DISHES);
+  };
+
   const editBtnHandler = (index) => {
     newIndex(index);
     navigate(routes.EDIT_RESTAURANT);
@@ -49,6 +54,15 @@ const CustList = () => {
             secondary={`${ele.email} | ${ele.phone}`}
           />
           <ListItemText secondary={ele.address} />
+          <Button
+            sx={{ mx: 1 }}
+            variant="contained"
+            onClick={() => {
+              detailsBtnHandler(index);
+            }}
+          >
+            Show Dishes
+          </Button>
           <Button
             sx={{ mx: 1 }}
             variant="contained"

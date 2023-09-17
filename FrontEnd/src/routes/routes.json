@@ -1,5 +1,6 @@
 {
   "HOME": "/",
   "ADD_NEW_RESTAURANT": "/add_new_restaurant",
-  "EDIT_RESTAURANT": "/edit_restaurant"
+  "EDIT_RESTAURANT": "/edit_restaurant",
+  "DISHES": "/dishes"
 }
