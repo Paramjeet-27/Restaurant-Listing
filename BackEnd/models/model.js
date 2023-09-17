@@ -11,6 +11,7 @@ const restaurant = sequelize.define("restaurants", {
   address: DataTypes.TEXT,
   email: DataTypes.TEXT,
   phone: DataTypes.INTEGER,
+  dishes: DataTypes.TEXT,
 });
 
 module.exports = { restaurant, sequelize };
